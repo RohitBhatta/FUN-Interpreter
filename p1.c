@@ -3,25 +3,11 @@
 
 void interpret(char program[]) {
 
-    /*char var = 'q';
-    int val = 42;
-
-    printf("%c:%d\n",var,val);*/
-
-    /*char str[] = "- This, a sample string.";
-    char * pch;
-    pch = strtok (str," ,.-");
-    while (pch != NULL)
-    {
-	printf ("%s\n",pch);
-	pch = strtok (NULL, " ,.-");
-    }*/
-
     int index = 0;
     int state = 0;
     int digCount = 0;
     char var;
-    char dig;    //Maybe change dig to int
+    char dig;
     char full[32];
     char digit[30];
     char table[26][32];
@@ -32,13 +18,10 @@ void interpret(char program[]) {
     }
     while (program[index] != 0) {
 	char c = program[index];
-	//printf("%c\n", c);
 	switch(state) {
 	    case 0 :
 		if (c >= 97 && c <= 122) {
-		    //Fix this so c is set to the letter not a number.
 		    var = c;
-		    //printf("%c\n", c);
 		    state++;
 		}
 		else {
@@ -49,7 +32,6 @@ void interpret(char program[]) {
 
 	    case 1 :
 		if (c == 61) {
-		    //printf("%c\n", c);
 		    state++;
 		}
 		else {
@@ -60,12 +42,9 @@ void interpret(char program[]) {
 
 	    case 2 : 
 		if (c >= 48 && c <= 57) {
-		    //Fix this so dig is actually a number not an ASCII value.
 		    dig = c;
-		    //strcpy(digit, dig);
 		    digit[digCount] = dig;
 		    digCount++;
-		    //printf("%c\n", c);
 		    state++;
 		}
 		else {
@@ -76,11 +55,6 @@ void interpret(char program[]) {
 
 	    case 3 :
 		if (c == 59) {
-		    //Fix string concatenation
-		    //table[var - 97] = var + ":" + dig;
-		    /*strcpy(full, var);
-		    strcat(full, ":");
-		    strcat(full, digit);*/
 		    int notZero = 0;
 		    int pos = 0;
 		    while (digit[pos] != 0) {
@@ -129,29 +103,9 @@ void interpret(char program[]) {
 		break;
 	}
     }
-    //Iterate through table array and print out all nonempty
-    //elements in new lines.
-    /*printf("%c\n", table[0][0]);
-    printf("%c\n", table[0][1]);
-    printf("%c\n", table[0][2]);
-    printf("%c\n", table[0][3]);
-    printf("%c\n", table[23][0]);
-    printf("%c\n", table[23][1]);
-    printf("%c\n", table[23][2]);
-    printf("%c\n", table[23][3]);
-    printf("%c\n", table[23][4]);
-    printf("%c\n", table[23][5]);
-    printf("%c\n", table[23][6]);
-    printf("%c\n", table[23][7]);*/
     for (int row = 0; row < 26; row++) {
 	for (int col = 0; col < 32; col++) {
 	    if (table[row][col] != 0) {
-		/*if (col == 0) {
-		    printf("%c\n", table[row][col]);
-		}
-		else {
-		    printf("%c", table[row][col]);
-		}*/
 		printf("%c", table[row][col]);
 	    }
 	    else {
