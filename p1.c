@@ -88,6 +88,11 @@ void interpret(char program[]) {
 			full[i] = digit[i - 2];
 		    }
 		    int a = 0;
+		    if (table[var - 97][0] != 0) {
+			for (int i = 0; i < 32; i++) {
+			    table[var - 97][i] = 0;
+			}
+		    }
 		    while (full[a] != 0) {
 			table[var - 97][a] = full[a];
 			a++;
