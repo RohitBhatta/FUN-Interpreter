@@ -81,35 +81,45 @@ void interpret(char program[]) {
 		    /*strcpy(full, var);
 		    strcat(full, ":");
 		    strcat(full, digit);*/
-		    full[0] = var;
-		    //printf("%c\n", var);
-		    full[1] = ':';
-		    for (int i = 2; i < digCount + 2; i++) {
-			full[i] = digit[i - 2];
-		    }
-		    int a = 0;
-		    if (table[var - 97][0] != 0) {
-			for (int i = 0; i < 32; i++) {
-			    table[var - 97][i] = 0;
+		    int notZero = 0;
+		    int pos = 0;
+		    while (digit[pos] != 0) {
+			if (digit[pos] != 48) {
+			    notZero++;
 			}
 		    }
-		    while (full[a] != 0) {
-			table[var - 97][a] = full[a];
-			a++;
+		    if (notZero > 0) {
+		        full[0] = var;
+		        full[1] = ':';
+		        for (int i = 2; i < digCount + 2; i++) {
+			    full[i] = digit[i - 2];
+		        }
+		        int a = 0;
+		        if (table[var - 97][0] != 0) {
+			    for (int i = 0; i < 32; i++) {
+			        table[var - 97][i] = 0;
+			    }
+		        }
+		        while (full[a] != 0) {
+			    table[var - 97][a] = full[a];
+			    a++;
+		        }
+		        state = 0;
+		        //memset(full, 0, a);
+		        //memset(digit, 0, digCount);
+		        for (int i = 0; i < a; i++) {
+			    full[i] = 0;
+		        }
+		        /*for (int i = 0; i < digCount + 1; i++) {
+			    printf("%c\n", digit[i]);
+		        }*/
+		        for (int i = 0; i < digCount + 1; i++) {
+			    digit[i] = 0;
+		        }
+		        a = 0;
+		        digCount = 0;
 		    }
 		    state = 0;
-		    //memset(full, 0, a);
-		    //memset(digit, 0, digCount);
-		    for (int i = 0; i < a; i++) {
-			full[i] = 0;
-		    }
-		    /*for (int i = 0; i < digCount + 1; i++) {
-			printf("%c\n", digit[i]);
-		    }*/
-		    for (int i = 0; i < digCount + 1; i++) {
-			digit[i] = 0;
-		    }
-		    a = 0;
 		    digCount = 0;
 		}
 		else if (c >= 48 && c <= 57) {
