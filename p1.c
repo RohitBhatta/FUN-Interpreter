@@ -87,6 +87,7 @@ void interpret(char program[]) {
 			if (digit[pos] != 48) {
 			    notZero++;
 			}
+			pos++;
 		    }
 		    if (notZero > 0) {
 		        full[0] = var;
