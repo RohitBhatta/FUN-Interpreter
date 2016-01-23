@@ -8,7 +8,6 @@ void interpret(char program[]) {
     int state = 0;
     int digCount = 0;
     char var;
-    char dig;
     char full[32];
     char digit[30];
     char table[26][32];
@@ -58,8 +57,7 @@ void interpret(char program[]) {
 		//c is a digit from 1 to 9
 		if (c >= 49 && c <= 57) {
 		    //Add digit to digit array
-		    dig = c;
-		    digit[digCount] = dig;
+		    digit[digCount] = c;
 		    digCount++;
 		    state++;
 		}
@@ -105,7 +103,7 @@ void interpret(char program[]) {
 			full[i] = 0;
 		    }
 		    //Clear digit array
-		    for (int i = 0; i < digCount + 1; i++) {
+		    for (int i = 0; i < 30; i++) {
 		        digit[i] = 0;
 		    }
 		    a = 0;
