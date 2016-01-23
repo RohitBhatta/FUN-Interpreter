@@ -112,7 +112,7 @@ void interpret(char program[]) {
 		    a = 0;
 		    digCount = 0;
 		}
-		else if (c >= 49 && c <= 57) {
+		else if (c >= 48 && c <= 57) {
 		    //printf("%c\n", c);
 		    digit[digCount] = c;
 		    digCount++;
