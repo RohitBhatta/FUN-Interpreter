@@ -105,14 +105,9 @@ void interpret(char program[]) {
 			    a++;
 		        }
 		        state = 0;
-		        //memset(full, 0, a);
-		        //memset(digit, 0, digCount);
 		        for (int i = 0; i < a; i++) {
 			    full[i] = 0;
 		        }
-		        /*for (int i = 0; i < digCount + 1; i++) {
-			    printf("%c\n", digit[i]);
-		        }*/
 		        for (int i = 0; i < digCount + 1; i++) {
 			    digit[i] = 0;
 		        }
@@ -123,7 +118,6 @@ void interpret(char program[]) {
 		    digCount = 0;
 		}
 		else if (c >= 48 && c <= 57) {
-		    //printf("%c\n", c);
 		    digit[digCount] = c;
 		    digCount++;
 		}
